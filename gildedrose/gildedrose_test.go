@@ -454,7 +454,7 @@ func Test_Foo(t *testing.T) {
 
 	for _, testCase := range tests {
 		t.Run("case", func(t *testing.T) {
-			UpdateQuality(testCase.items)
+			UpdateQuality(testCase.items...)
 			if len(testCase.items) != len(testCase.want) {
 				t.Log(testCase.items)
 				t.Log(testCase.want)
