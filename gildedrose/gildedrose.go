@@ -31,13 +31,14 @@ func (i *Item) updateAgedBrie() {
 
 func (i *Item) updateBackstage() {
 	var qualityChange int
-	if i.SellIn > 10 {
+	switch {
+	case i.SellIn > 10:
 		qualityChange = 1
-	} else if i.SellIn > 5 {
+	case i.SellIn > 5:
 		qualityChange = 2
-	} else if i.SellIn > 0 {
+	case i.SellIn > 0:
 		qualityChange = 3
-	} else {
+	default:
 		qualityChange = -i.Quality
 	}
 	i.Quality = min(i.Quality+qualityChange, maxQuality)
